@@ -1,0 +1,25 @@
+<div>
+  <div *ngIf="fetching">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
+  <table class="table" *ngIf="!fetching">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Avatar</th>
+        <th>Repos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>
+          <span>{{user.title}}</span>
+        </td>
+        <td>
+          <img src="{{user.thumbnailUrl}}" alt="Thumbnail">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

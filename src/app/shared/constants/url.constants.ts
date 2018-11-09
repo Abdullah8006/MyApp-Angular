@@ -1,0 +1,1 @@
+export const USER_POST = "https://jsonplaceholder.typicode.com/photos" 

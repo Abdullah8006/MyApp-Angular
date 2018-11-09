@@ -1,0 +1,41 @@
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input (focus)="showErrorForAuth=false" formControlName="email" type="email" class="form-control" id="email" placeholder="Enter email"
+                name="email" required>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="email.errors.email">
+                Email field must be an email.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input formControlName="password" type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"
+                required>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                Password field must be atleast 8 characters.
+            </div>
+        </div>
+        <div *ngIf="showErrorForAuth" class="alert alert-danger">
+            <div>
+                Email and Password doesnt match.
+            </div>
+        </div>
+        <div *ngIf="password.errors.forbiddenName && (password.dirty || password.touched)" class="alert alert-danger">
+            <div>
+                Custom validator, forbidden name, failed.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
